@@ -1,12 +1,32 @@
 #function here
 from import_ import * 
 
-def difflib_function(input_):
-	data = difflib.get_close_matches(input_, )
+#主程式
+'''
+定義對話關鍵字:
+if input_ == '關鍵字':
+	函數名稱()
 
+'''
 def main_function(input_):
 	chat_list_count = 0
-	chat_list = ['天氣']
-	while(1):
-		if input_ == chat_list[chat_list_count]:
+	try:
+		if input_ == '天氣':
+			weather()
+		if input_ == '':
+
+	except:
+		difflib_function(input_)
+	
 			
+
+#模糊判斷
+def difflib_function(input_):
+	data = difflib.get_close_matches(input_, )
+	print(data)
+#從這裡開始是定義對話關鍵字的函式
+def weather():
+
+
+
+	
