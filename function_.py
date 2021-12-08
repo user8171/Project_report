@@ -18,7 +18,7 @@ def mainfunction(input):
             '''(這裡輸入子判斷式判斷要搜尋哪個區域),
                 類似->input('請搜尋要查詢的行政區')
             '''
-            collect_information = 'test'
+            collect_information = ''
             weather()
         #if input == '':
     except:
