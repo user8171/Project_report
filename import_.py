@@ -1,5 +1,7 @@
 #import 在這裡
-import time, tkinter, difflib, requests, urllib
+import time, tkinter, difflib, requests
+import urllib.request as ur
+import json
 
 from bs4 import BeautifulSoup
 from function_ import *
