@@ -34,19 +34,16 @@ def difflibfunction(input):
 def weather():
         collect_information = ['']
         url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=rdec-key-123-45678-011121314'
-        #get_data = requests.get(url).text
-        #print(json.dumps(get_data, indent = 4, sort_keys=True))
-        #data = BeautifulSoup(get_data, 'xml')
-        #print(data.find_all('value').get_text)
         
         get_data = requests.get(url).text
         get_data = json.loads(get_data)
-        for i in get_data:
-                if i == 'locationName':
-                        collect_information[0] += i
-
-        print(collect_information[0])
-        #print(data)
+        data = ''
+        data = get_data['records']
+        data = data['locations']
+        data = data[0]
+        data = data["weatherElement"]
+        print(get_data)
+        
 
 weather()
 
