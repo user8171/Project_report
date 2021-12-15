@@ -44,6 +44,6 @@ def weather():
         data = data["weatherElement"]
         print(get_data)
         
-
+        #測試by vs
 weather()
 
