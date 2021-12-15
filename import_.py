@@ -5,4 +5,6 @@ import json
 
 from bs4 import BeautifulSoup
 from function_ import *
-from tkinter import scrolledtext
+from tkinter import scrolledtext    
+
+#測試
