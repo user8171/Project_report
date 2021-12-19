@@ -36,10 +36,10 @@ def weather(input_location):
         collect_information = ['']
         url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=rdec-key-123-45678-011121314'
         locations = {'基隆市':'12', '臺北市':'9', '新北市':'3', '桃園市':'13', '新竹縣':'0', '新竹市':'21', '苗栗縣':'2', '臺中市':'20', '彰化縣':'8', '雲林縣':'5', '南投縣':'10', '嘉義縣':'18', '嘉義市':'17', '臺南市':'6', '高雄市':'7', '屏東縣':'19', '臺東縣':'16', '花蓮縣':'14', '宜蘭縣':'4', '金門縣':'1', '澎湖縣':'11', '連江縣':'15'}
-            
-        if input_location not in locations:
-                print("error")
-        else:
+
+        #判斷是否有資料
+        try:
+                location_number = locations[input_location]
                 get_data = requests.get(url).text
                 get_data = json.loads(get_data)
                 data = ''
@@ -47,11 +47,29 @@ def weather(input_location):
                 data = data['locations']
                 data = data[0]
                 data = data['location']
-                data = data['01']
-                #edited by user81711
-        #data = data[0]
-        #data = data['weatherElement']
-        #for i in locations:
-        #        print(locations[i])
-#weather('基隆市')
+                data = data[int(location_number)]
+
+                #weather_raindown_persent(data)
+                #以下為抓取降雨機率
+
+                print(type(data))#type dict
+
+
+        except KeyError:
+                #凱擇,這裡用Label修改文字="輸入未支援的地區"
+                print("輸入未支援的地區")
+        #except Excetion as e:
+        #       print(e)
+        except:
+                #凱擇,這裡用Label修改文字="發生未知錯誤"
+                print("發生未知錯誤")
+
+#降雨機率
+def weather_raindown_persent(present_data):
+        present_data = present_data[0]
+        for i in range(0,present_data):
+                print(i)
+
+
+weather('基隆市')
 #weather('GG市')
