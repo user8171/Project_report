@@ -48,7 +48,7 @@ def weather(input_location):
                 data = data[0]
                 data = data['location']
                 data = data['01']
-                #edited by user8171
+                #edited by user8171.
         #data = data[0]
         #data = data['weatherElement']
         #for i in locations:
