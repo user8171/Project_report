@@ -47,11 +47,11 @@ def weather(input_location):
                 data = data['locations']
                 data = data[0]
                 data = data['location']
-        
+                data = data['01']
+                #edited by user8171
         #data = data[0]
         #data = data['weatherElement']
         #for i in locations:
         #        print(locations[i])
-        
 #weather('基隆市')
 #weather('GG市')
