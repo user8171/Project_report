@@ -53,9 +53,8 @@ def weather(input_location):
                 #凱擇,這裡讓使用者輸入「降雨機率預報」套用weather_predict_information(data)函式
                 #return型態為List,其內容為未來七天的天氣資訊,還有原網址
 
-                #weather_predict_information(data)
+                weather_predict_information(data)
                 
-                #weather_raindown_persent(data)
 
         except KeyError:
                 #凱擇,這裡用Label修改文字="輸入未支援的地區"
@@ -83,7 +82,9 @@ def weather_predict_information(data):
                         present_data = present_data['elementValue']
                         present_data = present_data[0]
                         collect_weather_information[i] += present_data.get('value') + '\n'
+                        print(collect_weather_information[i])
                 collect_weather_information[7] += "更多資訊: https://data.gov.tw/dataset/9308"
+                
                 return collect_weather_information
         except Exception as e:
                 #凱擇,這裡用Label修改文字="發生未知錯誤"
@@ -91,5 +92,5 @@ def weather_predict_information(data):
 
 #test case
 #weather('新竹縣')
-#weather('基隆市')
+weather('基隆市')
 #weather('GG市')
