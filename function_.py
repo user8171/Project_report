@@ -45,25 +45,17 @@ def weather(input_location):
                 get_data = json.loads(get_data)
                 data = ''
                 data = get_data['records']
-                #type: dict
                 data = data['locations']
-                #type: list
                 data = data[0]
-                #type: dict
                 data = data['location']
-                #type: list
                 data = data[int(location_number)]
-                #type: dict
 
                 #凱擇,這裡讓使用者輸入「降雨機率預報」套用weather_predict_information(data)函式
                 #return型態為List,其內容為未來七天的天氣資訊,還有原網址
 
                 #weather_predict_information(data)
-
-                #type: dict
-                #weather_raindown_persent(data)
                 
-
+                #weather_raindown_persent(data)
 
         except KeyError:
                 #凱擇,這裡用Label修改文字="輸入未支援的地區"
@@ -97,6 +89,7 @@ def weather_predict_information(data):
                 #凱擇,這裡用Label修改文字="發生未知錯誤"
                 print(f"發生未知錯誤,code: {e}")
 
+#test case
 #weather('新竹縣')
 #weather('基隆市')
-weather('GG市')
+#weather('GG市')
