@@ -3,6 +3,6 @@ import time, tkinter, difflib, requests
 import urllib.request as ur
 import json
 
-from bs4 import BeautifulSoup
-from function_ import *
+#from bs4 import BeautifulSoup
+#from function_ import *
 from tkinter import scrolledtext
