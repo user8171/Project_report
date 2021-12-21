@@ -1,11 +1,13 @@
 from import_ import *
 
-def btn_col():
+def btn_col(status_code):
 	if en.get() != '':
 		#取得使用者輸入的文字
 		#en.get()
-
-		talking_function(en.get(), lb1)
+		if status_code == 1:
+			talking_function(en.get(), lb1, btn, status_code)
+		elif status_code == 2:
+			weather(input_, label_element, en.get(), btn, status_code)
 
 root = tk.Tk()
 root.title('talking robot') #拜託不要叫line bot(沒有用到line api) 
@@ -15,7 +17,7 @@ la = tk.Label(root,text='使用者:',font = 50)
 la.pack()
 en = tk.Entry(root,text='',bg="white",borderwidth = 2 , textvariable = en,width = 60)
 en.pack(padx=10)
-btn = tk.Button(root,bd = 4, text='傳送訊息', command=btn_col,height=2,width=8)
+btn = tk.Button(root,bd = 4, text='傳送訊息', command=lambda: btn_col(1),height=2,width=8)
 btn.pack()
 lb = tk.Label(root,text='機器人:',font = 50)
 lb.pack()

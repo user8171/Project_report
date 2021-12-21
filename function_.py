@@ -1,51 +1,48 @@
 #function here
 #-*- coding:utf-8 -*-
-from tkinter import EXCEPTION, Label
-from tkinter.constants import NONE
-from typing import cast
-from requests.api import get
 from import_ import * 
 
-'''
-定義對話關鍵字:
-if input == '關鍵字':
-    函數名稱()
-
-'''
-
 #關鍵字對話程式
-#input_為使用者輸入文字, label_element為label元素
-def talking_function(input_, label_element):
+#input_text為使用者輸入文字, label_element為label元素
+def talking_function(input_text, label_element, button_element, status_code):
         #關鍵字清單
         interact_text = ['天氣','你好']
-        input_ = str(input_)
-        if input_ == '天氣':
-                weather(input_, label_element)
+        if input_text == '天氣':
+                weather(input_text, label_element,NONE, button_element, status_code)
          #if input == '':
         else:
-                difflibfunction(input_, interact_text, label_element)
+                difflibfunction(input_text, interact_text, label_element)
 
 #模糊判斷
-def difflibfunction(input_, interact_text, label_element):
+def difflibfunction(input_text, interact_text, label_element):
         #cutoff: 誤差, n:回傳幾筆近似資料
         try:
-                data = difflib.get_close_matches(input_, interact_text, cutoff = 0.5, n=1)
+                data = difflib.get_close_matches(input_text, interact_text, cutoff = 0.5, n=1)
                 label_element['text'] = '你是不是想說: ' + data[0]
         except:
                 label_element['text'] = '不支援的關鍵字。' 
 
 #從這裡開始是定義對話關鍵字的函式
 #未來七天天氣預報
-def weather(input_location, label_element):
-        collect_information = ['']
+#def weather(input_text):
+def weather(input_text, label_element,get_location, button_element, status_code):
+        if status_code == 1:
+                label_element['text'] = '請輸入台灣行政區,輸入「取消」以停止搜尋天氣資訊'
+                continue
+        elif input_text == '取消':
+                button_element['command'] = 'command=lambda: btn_col(1)' 
+                label_element['text'] = '已結束搜尋天氣資訊。' 
+                return 0
+        else:
+                continue
+        #修改button的status_code
+        #button_element['command'] = 'command=lambda: btn_col(2)' 
         url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=rdec-key-123-45678-011121314'
         locations = {'基隆市':'12', '臺北市':'9', '新北市':'3', '桃園市':'13', '新竹縣':'0', '新竹市':'21', '苗栗縣':'2', '臺中市':'20', '彰化縣':'8', '雲林縣':'5', '南投縣':'10', '嘉義縣':'18', '嘉義市':'17', '臺南市':'6', '高雄市':'7', '屏東縣':'19', '臺東縣':'16', '花蓮縣':'14', '宜蘭縣':'4', '金門縣':'1', '澎湖縣':'11', '連江縣':'15'}
         
         #判斷是否有資料
         try:
-                #label_element['text'] = '請輸入台灣行政區' 
-                print(type(input_location))
-                location_number = locations[input_location]
+                location_number = locations[input_text]
                 get_data = requests.get(url).text
                 get_data = json.loads(get_data)
                 data = ''
@@ -71,6 +68,7 @@ def weather(input_location, label_element):
 
         except Exception as e:
                 #凱擇,這裡用Label修改文字="發生未知錯誤"
+                print(e)
                 label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
 
 #未來七天降雨機率
@@ -92,3 +90,5 @@ def weather_predict_information(data, label_element):
         except Exception as e:
                 #凱擇,這裡用Label修改文字="發生未知錯誤"
                 label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
+
+#weather('基隆市')
