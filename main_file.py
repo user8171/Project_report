@@ -8,7 +8,7 @@ def btn_col(status_code):
 			weather(input_, label_element, en.get(), btn, status_code)
 	if status == '1':
 		button_element.configure(command=lambda: btn_col(2))
-		 
+		
 root = tk.Tk()
 root.title('培勝老師,你好棒我好愛你')
 root.geometry('550x450')
