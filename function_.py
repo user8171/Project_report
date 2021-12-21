@@ -1,7 +1,6 @@
 #function here
 #-*- coding:utf-8 -*-
 from import_ import * 
-
 #關鍵字對話程式
 #input_text為使用者輸入文字, label_element為label元素
 def talking_function(input_text, label_element, button_element, status_code):
@@ -28,15 +27,17 @@ def difflibfunction(input_text, interact_text, label_element):
 def weather(input_text, label_element,get_location, button_element, status_code):
         if status_code == 1:
                 label_element['text'] = '請輸入台灣行政區,輸入「取消」以停止搜尋天氣資訊'
-                continue
+                #button_element['command'] = 'command=lambda: btn_col(1)' 
+                button_element.configure(command=lambda: btn_col(2))
+                return True
         elif input_text == '取消':
-                button_element['command'] = 'command=lambda: btn_col(1)' 
+                #button_element['command'] = 'command=lambda: btn_col(1)' 
+                button_element.configure(command=lambda: btn_col(1))
                 label_element['text'] = '已結束搜尋天氣資訊。' 
                 return 0
-        else:
-                continue
+        
         #修改button的status_code
-        #button_element['command'] = 'command=lambda: btn_col(2)' 
+        button_element['command'] = 'command=lambda: btn_col(2)' 
         url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=rdec-key-123-45678-011121314'
         locations = {'基隆市':'12', '臺北市':'9', '新北市':'3', '桃園市':'13', '新竹縣':'0', '新竹市':'21', '苗栗縣':'2', '臺中市':'20', '彰化縣':'8', '雲林縣':'5', '南投縣':'10', '嘉義縣':'18', '嘉義市':'17', '臺南市':'6', '高雄市':'7', '屏東縣':'19', '臺東縣':'16', '花蓮縣':'14', '宜蘭縣':'4', '金門縣':'1', '澎湖縣':'11', '連江縣':'15'}
         
@@ -67,7 +68,6 @@ def weather(input_text, label_element,get_location, button_element, status_code)
                 label_element['text'] = '輸入未支援的地區。\n' + locations_list
 
         except Exception as e:
-                #凱擇,這裡用Label修改文字="發生未知錯誤"
                 print(e)
                 label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
 
@@ -88,7 +88,6 @@ def weather_predict_information(data, label_element):
                 
                 return collect_weather_information
         except Exception as e:
-                #凱擇,這裡用Label修改文字="發生未知錯誤"
                 label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
 
 #weather('基隆市')

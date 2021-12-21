@@ -5,9 +5,11 @@ def btn_col(status_code):
 		#取得使用者輸入的文字
 		#en.get()
 		if status_code == 1:
-			talking_function(en.get(), lb1, btn, status_code)
+			status = talking_function(en.get(), lb1, btn, status_code)
 		elif status_code == 2:
 			weather(input_, label_element, en.get(), btn, status_code)
+	if status == '1':
+		button_element.configure(command=lambda: btn_col(2))
 
 root = tk.Tk()
 root.title('talking robot') #拜託不要叫line bot(沒有用到line api) 
