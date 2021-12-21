@@ -13,9 +13,11 @@ if input == '關鍵字':
 '''
 
 #關鍵字對話程式
-def talking_function(input):
+#input_為使用者輸入文字, label_element為label元素
+def talking_function(input_, label_element):
         chat_listcount = 0
-        if input == '天氣':
+        interact_text = ['天氣','你好']
+        if input_ == '天氣':
                 locate_area = ''
                 '''(這裡輸入子判斷式判斷要搜尋哪個區域),
                         類似->input('請搜尋要查詢的行政區')
@@ -23,13 +25,13 @@ def talking_function(input):
                 #weather()#函式內放要查詢的行政區
          #if input == '':
         else:
-                difflibfunction(input)
+                difflibfunction(input_, interact_text, label_element)
 
 #模糊判斷
-def difflibfunction(input):
+def difflibfunction(input_, interact_text, label_element):
         #cutoff: 誤差, n:回傳幾筆近似資料
-        data = difflib.get_closematches(input, cutoff = 0.5, n=1)
-        print('你是不是想說: ' + data)
+        data = difflib.get_close_matches(input_, interact_text, cutoff = 0.5, n=1)
+        label_element['text'] = '你是不是想說: ' + data[0]
 
 #從這裡開始是定義對話關鍵字的函式
 #未來七天天氣預報

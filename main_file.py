@@ -1,13 +1,14 @@
-#主程式 here
-#設定輸入文字變數: input_
-
 from import_ import *
-import tkinter as tk
+
 def btn_col():
 	if en.get() != '':
-	       en.get()
+		#取得使用者輸入的文字
+		#en.get()
+
+		talking_function(en.get(), lb1)
+
 root = tk.Tk()
-root.title('Line bot')
+root.title('talking robot') #拜託不要叫line bot(沒有用到line api) 
 root.geometry('700x700')
 en = tk.StringVar()
 la = tk.Label(root,text='使用者:',font = 50)
