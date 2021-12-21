@@ -30,8 +30,11 @@ def talking_function(input_, label_element):
 #模糊判斷
 def difflibfunction(input_, interact_text, label_element):
         #cutoff: 誤差, n:回傳幾筆近似資料
-        data = difflib.get_close_matches(input_, interact_text, cutoff = 0.5, n=1)
-        label_element['text'] = '你是不是想說: ' + data[0]
+        try:
+                data = difflib.get_close_matches(input_, interact_text, cutoff = 0.5, n=1)
+                label_element['text'] = '你是不是想說: ' + data[0]
+        except:
+                label_element['text'] = '不支援的關鍵字。'
 
 #從這裡開始是定義對話關鍵字的函式
 #未來七天天氣預報

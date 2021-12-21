@@ -19,6 +19,6 @@ btn = tk.Button(root,bd = 4, text='傳送訊息', command=btn_col,height=2,width
 btn.pack()
 lb = tk.Label(root,text='機器人:',font = 50)
 lb.pack()
-lb1 = tk.Label(root,height=50,width = 60,bg="white",fg="black",font = 25)
+lb1 = tk.Label(root,height=50,width = 60,bg="white",fg="black",font = 25, anchor = 'n')
 lb1.pack(padx=5)
 root.mainloop()
