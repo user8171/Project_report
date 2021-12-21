@@ -22,7 +22,7 @@ def difflibfunction(input_text, interact_text, label_element):
                 label_element['text'] = '不支援的關鍵字。' 
 
 #從這裡開始是定義對話關鍵字的函式
-#未來七天天氣預報 
+#未來七天天氣預報
 #def weather(input_text):
 def weather(input_text, label_element,get_location, button_element, status_code):
         if status_code == 1:
