@@ -4,6 +4,8 @@
 	main_file		尚未處理完成  
 
 function.py:  
-	weather_api:完成(?
+	weather_api:完成
 	其餘聊天關鍵字還需要設定
-	更換button屬性有問題 
+
+mainfile的scrollbar程式碼還留著,檔案提取下來經測試皆正常。
+再測試scrollbar的過程中，盡量維持程式能執行by憨及
