@@ -16,6 +16,6 @@ lb.grid()
 #lb1 = scrolledtext.ScrolledText(root,width=70,height=13)#滾動Lebal
 #lb1.grid()
 
-lb1 = tk.Label(root,height=50,width = 60,bg="gray",fg="black",font = 25, anchor = 'n')
+lb1 = tk.Label(root,height=50,width = 60,bg="gray",fg="black",font = 25, anchor = 'n', wraplength=550)
 lb1.grid(padx=5)
 root.mainloop()

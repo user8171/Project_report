@@ -5,11 +5,13 @@ from import_ import *
 def btn_col(status_code, entry_element, label_element, button_element):
 	if entry_element.get() != '':
                 #status_code 設定為一般聊天
-		if status_code == 1:
-			status = talking_function(entry_element.get(), entry_element, label_element, button_element, status_code)
+                if status_code == 1:
+                        talking_function(entry_element.get(), entry_element, label_element, button_element, status_code)
+                        entry_element.delete(0,"end")
                 #status_code 設定為查詢天氣資訊
-		elif status_code == 2:
-			weather(entry_element.get(), entry_element, label_element, button_element, status_code)
+                elif status_code == 2:
+                        weather(entry_element.get(), entry_element, label_element, button_element, status_code)
+                        entry_element.delete(0,"end")
 
 #關鍵字對話程式
 #input_text為使用者輸入文字, label_element為label元素
@@ -72,12 +74,11 @@ def weather(input_text, entry_element, label_element, button_element, status_cod
                 locations_list = ['支援的縣市:']
                 for key in locations.keys():
                         locations_list[0] += key + ' '
-                print(locations_list[0])
-                label_element['text'] = '輸入未支援的地區。\n' + locations_list[0]
+                label_element['text'] = '輸入未支援的地區。\n\n' + locations_list[0] +'\n請重新輸入。'
+                button_element.configure(command=lambda: btn_col(2, entry_element, label_element, button_element))
                 pass
 
         except Exception as e:
-                print(e)
                 label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
         
 #未來七天降雨機率
@@ -89,11 +90,12 @@ def weather_predict_information(data, label_element):
                 data = data['time']
                 for i in range(0, 7):
                         present_data = data[i]
-                        collect_weather_information[i] +='開始時間: ' + present_data.get('startTime') + '\n結束時間: ' + present_data.get('endTime') + '\n天氣資訊'
+                        present_data.get('endTime') + '\n天氣資訊'
+                        collect_weather_information[0] +='開始時間: ' + present_data.get('startTime') + '\n結束時間: ' + present_data.get('endTime') + '\n天氣資訊'
                         present_data = present_data['elementValue']
                         present_data = present_data[0]
-                        collect_weather_information[i] += present_data.get('value') + '\n'
-                collect_weather_information[7] += "更多資訊: https://data.gov.tw/dataset/9308"
+                        collect_weather_information[0] += present_data.get('value') + '\n\n'
+                collect_weather_information[0] += "更多資訊: https://data.gov.tw/dataset/9308" + '\n'
                 label_element['text'] = collect_weather_information
                 return collect_weather_information
         except Exception as e:
