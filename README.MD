@@ -6,4 +6,4 @@
 function.py:  
 	weather_api:完成(?
 	其餘聊天關鍵字還需要設定
-	更換button屬性有問題
+	更換button屬性有問題 
