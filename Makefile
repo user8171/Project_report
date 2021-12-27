@@ -6,5 +6,5 @@ git_push:
 	git rm --cached Makefile
 	git rm --cached -r __pycache__
 	git rm --cached -r .vs
-	git push https://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@github.com/user8171/Project_report.git
+	git push https://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@github.com/user8171/Project_report.git
 
