@@ -1,5 +1,5 @@
 #import 在這裡
-import  difflib, requests, datetime
+import  difflib, requests, datetime, random
 import tkinter as tk
 import urllib.request as ur
 import json

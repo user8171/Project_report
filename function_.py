@@ -7,7 +7,7 @@ def btn_col(status_code, entry_element, label_element, button_element):
 		#status_code 設定為一般聊天
 		if status_code == 1:
 			talking_function(entry_element.get(), entry_element, label_element, button_element, status_code)
-			entry_element.delete(0,"end")
+			#entry_element.delete(0,"end")
 		#status_code 設定為查詢天氣資訊
 		elif status_code == 2:
 			weather(entry_element.get(), entry_element, label_element, button_element, status_code)
@@ -17,23 +17,33 @@ def btn_col(status_code, entry_element, label_element, button_element):
 #input_text為使用者輸入文字, label_element為label元素
 def talking_function(input_text, entry_element, label_element, button_element, status_code):
 	#關鍵字清單
-	interact_text = ['天氣','你好','時間']
+	interact_text = ['天氣','你好','時間','美食', '運動']
 	if input_text == '天氣':
 		weather(input_text, entry_element, label_element, button_element, status_code)
+		entry_element.delete(0,"end")
 	elif input_text == '你好':
 		hello(input_text, label_element)
+		entry_element.delete(0,"end")
 	elif input_text == '時間':
 		get_time(input_text, label_element)
-         #if input == '':
+		entry_element.delete(0,"end")
+	elif input_text == '美食':
+		good_food_osusume(input_text, label_element)
+		entry_element.delete(0,"end")
+	elif input_text == '運動':
+		exercise_osusume(input_text, label_element)
+		entry_element.delete(0,"end")
 	else:
-		difflibfunction(input_text, interact_text, label_element)
-
+		difflibfunction(input_text, interact_text, label_element, entry_element)
+	
 #模糊判斷
-def difflibfunction(input_text, interact_text, label_element):
+def difflibfunction(input_text, interact_text, label_element, entry_element):
 	#cutoff: 誤差, n:回傳幾筆近似資料
 	try:
 		data = difflib.get_close_matches(input_text, interact_text, cutoff = 0.5, n=1)
 		label_element['text'] = '你是不是想說: ' + data[0]
+		entry_element.delete(0,"end")
+		entry_element.insert(0,data[0])
 	except:
 		label_element['text'] = '不支援的關鍵字。' 
 
@@ -108,5 +118,15 @@ def hello(input_, label_element):
 	label_element['text'] = '您好,歡迎與我聊天'
 
 def get_time(input_, label_element):
-	output_str = '現在時間是: ' + str(datetime.datetime.now())
-	label_element['text'] = output_str
+	label_element['text'] = '現在時間是: ' + str(datetime.datetime.now())
+
+def good_food_osusume(input_, label_element):
+	good_food_list = ['藍獸亓--香酥黃金雞飯',  '二口炒飯--綜合鐵板麵', '快炒王--火腿蛋炒飯', '福禾--無骨雞丁便當', '古早味便當--大雞腿便當', '翔鶴--雞排便當', '樂謎雞排--原味雞排', '八兩--這三小', '豪大要倒了']
+	good_drink_list = ['水云茶堂--珍珠紅茶無糖去冰', '多多茶坊--核廢料', '喫茶小舖--薑汁撞奶', '春水堂--珍珠奶茶']
+	#output_str =good_drink_list[random.randint(0,len(good_drink_list)-1)]
+	#print(type(output_str))
+	label_element['text'] = '今天推薦 ' + good_food_list[random.randint(0, len(good_food_list)-1)] + ',搭配 ' + good_drink_list[random.randint(0, len(good_drink_list)-1)]
+
+def exercise_osusume(input_, label_element):
+	exercise_list = ['籃球', '羽球', '網球', '排球']
+	label_element['text'] = '運動建議: ' + exercise_list[random.randint(0, len(exercise_list))-1]
