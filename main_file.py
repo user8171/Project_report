@@ -1,3 +1,4 @@
+#主程式
 from import_ import *
 		
 root = tk.Tk()

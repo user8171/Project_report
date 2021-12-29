@@ -85,7 +85,8 @@ def weather(input_text, entry_element, scrolledtext_element, button_element, sta
 
 		#return型態為List,其內容為未來七天的天氣資訊,還有原網址
 		weather_predict_information(data, scrolledtext_element)
-		
+		button_element.configure(command=lambda: btn_col(1, entry_element, scrolledtext_element, button_element))
+
 	except KeyError:
 		#loction_list為可以被查詢的縣市
 		locations_list = ['支援的縣市:']
