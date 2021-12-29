@@ -50,7 +50,7 @@ def difflibfunction(input_text, interact_text, scrolledtext_element, entry_eleme
 		scrolledtext_element.insert(tk.END, output_str)
 
 #從這裡開始是定義對話關鍵字的函式
-#未來七天天氣預報 
+#未來三天天氣預報 
 #def weather(input_text):
 def weather(input_text, entry_element, scrolledtext_element, button_element, status_code):
 	if status_code == 1:
@@ -83,7 +83,7 @@ def weather(input_text, entry_element, scrolledtext_element, button_element, sta
 		data = data['location']
 		data = data[int(location_number)]
 
-		#return型態為List,其內容為未來七天的天氣資訊,還有原網址
+		#return型態為List,其內容為未來三天的天氣資訊,還有原網址
 		weather_predict_information(data, scrolledtext_element)
 		button_element.configure(command=lambda: btn_col(1, entry_element, scrolledtext_element, button_element))
 
@@ -101,7 +101,7 @@ def weather(input_text, entry_element, scrolledtext_element, button_element, sta
 		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 
-#未來七天降雨機率
+#未來三天降雨機率
 def weather_predict_information(data, scrolledtext_element):
 	collect_weather_information = ''
 	try:
