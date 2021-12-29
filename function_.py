@@ -119,7 +119,7 @@ def weather_predict_information(data, scrolledtext_element):
 		scrolledtext_element.insert(tk.END, output_str)
 
 	except Exception as e:
-		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e
+		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 
 def hello(input_, scrolledtext_element):
