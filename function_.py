@@ -110,7 +110,7 @@ def weather_predict_information(data, scrolledtext_element):
 		data = data['time']
 		for i in range(0, 7):
 			present_data = data[i]
-			present_data.get('endTime') + '\n天氣資訊'
+			present_data.get('endTime') + '\n天氣資訊:\n'
 			collect_weather_information +='開始時間: ' + present_data.get('startTime') + '\n結束時間: ' + present_data.get('endTime') + '\n天氣資訊'
 			present_data = present_data['elementValue']
 			present_data = present_data[0]
