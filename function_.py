@@ -127,7 +127,8 @@ def hello(input_, scrolledtext_element):
 	scrolledtext_element.insert(tk.END, output_str)
 
 def get_time(input_, scrolledtext_element):
-	output_str = '現在時間是: ' + str(datetime.datetime.now()) + '\n'
+	now = datetime.datetime.now()
+	output_str = '現在時間是: ' + now.strftime("%Y年%m月%d號 %H時%M分%S秒") + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def good_food_osusume(input_, scrolledtext_element):
