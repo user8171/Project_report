@@ -103,6 +103,7 @@ def weather_predict_information(data, label_element):
 		return collect_weather_information
 	except Exception as e:
 		label_element['text'] = '發生未知錯誤。錯誤代碼訊息: ' + e
+
 def hello(input_, label_element):
 	label_element['text'] = '您好,歡迎與我聊天'
 
