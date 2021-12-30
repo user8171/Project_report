@@ -221,7 +221,7 @@ def good_food_osusume(input_, scrolledtext_element):
 	scrolledtext_element.insert(tk.END, output_str)
 
 def exercise_osusume(input_, scrolledtext_element):
-	exercise_list = ['打籃球', '打羽球', '打網球', '打排球','踢足球']
+	exercise_list = ['打籃球', '打羽球', '打網球', '打排球','踢足球','打撞球','打桌球']
 	output_str = '你今天可以去 : ' + exercise_list[random.randint(0, len(exercise_list))-1] + '\n' + '---------------------------------------------------------'
 	scrolledtext_element.insert(tk.END, output_str)
 
