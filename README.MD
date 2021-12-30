@@ -4,5 +4,5 @@
 	main_file		處理完成  
 
 打包：  
-(sudo) pip(3) install pyinstaller  
+pip(3) install pyinstaller  
 pyinstaller -F main_file.py  
