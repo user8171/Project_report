@@ -2,7 +2,7 @@
 from import_ import *
 		
 root = tk.Tk()
-root.title('培勝老師,你好棒我好愛你')
+root.title('聊天機器人')
 root.geometry('650x450')
 en = tk.StringVar()
 la = tk.Label(root,text='使用者:',font = 50)

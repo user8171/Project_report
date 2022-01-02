@@ -215,7 +215,7 @@ def get_time(input_, scrolledtext_element):
 	scrolledtext_element.insert(tk.END, output_str)
 
 def good_food_osusume(input_, scrolledtext_element):
-	good_food_list = ['藍獸亓--香酥黃金雞飯',  '二口炒飯--綜合鐵板麵', '快炒王--火腿蛋炒飯', '福禾--無骨雞丁便當', '古早味便當--大雞腿便當', '翔鶴--雞排便當', '樂謎雞排--原味雞排', '八兩--雞排', '豪大要倒了']
+	good_food_list = ['藍獸亓--香酥黃金雞飯',  '二口炒飯--綜合鐵板麵', '快炒王--火腿蛋炒飯', '福禾--無骨雞丁便當', '古早味便當--大雞腿便當', '翔鶴--雞排便當', '樂謎雞排--原味雞排', '八兩--雞排']
 	good_drink_list = ['水云茶堂--珍珠紅茶無糖去冰', '多多茶坊--核廢料', '喫茶小舖--薑汁撞奶', '春水堂--珍珠奶茶']
 	output_str = '我覺得你今天可以吃 : \n' + good_food_list[random.randint(0, len(good_food_list)-1)] + ' 搭配 ' + good_drink_list[random.randint(0, len(good_drink_list)-1)] + '\n' + '---------------------------------------------------------'
 	scrolledtext_element.insert(tk.END, output_str)
