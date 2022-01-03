@@ -3,7 +3,7 @@ from import_ import *
 		
 root = tk.Tk()
 root.title('聊天機器人')
-root.geometry('450x380')
+root.geometry('610x430')
 en = tk.StringVar()
 la = tk.Label(root,text='使用者:',font = 50)
 la.grid(column = 0,row = 0, sticky=tk.W)

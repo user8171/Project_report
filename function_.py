@@ -124,7 +124,7 @@ def difflibfunction(input_text, interact_text, scrolledtext_element, entry_eleme
 	#cutoff: 誤差, n:回傳幾筆近似資料
 	try:
 		data = difflib.get_close_matches(input_text, interact_text, cutoff = 0.5, n=1)
-		output_str = '你是不是想說: ' + data[0] + ' ?' + '\n' + '---------------------------------------------------------'
+		output_str = '你是不是想說: ' + data[0] + ' ?' + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 		entry_element.delete(0,"end")
 		entry_element.insert(0,data[0])
@@ -137,7 +137,7 @@ def difflibfunction(input_text, interact_text, scrolledtext_element, entry_eleme
 #def weather(input_text):
 def weather(input_text, entry_element, scrolledtext_element, button_element, status_code):
 	if status_code == 1:
-		output_str = '如果想知道天氣如何,那請輸入該縣市名稱 ' + 'ex:臺中市\n' + '如果不用的話,那請輸入「取消」即可停止搜尋天氣資訊' + '\n' + '---------------------------------------------------------'
+		output_str = '如果想知道天氣如何,那請輸入該縣市名稱 ' + 'ex:臺中市\n' + '如果不用的話,那請輸入「取消」即可停止搜尋天氣資訊' + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 		button_element['command'] = command=lambda: btn_col(2, entry_element, scrolledtext_element, button_element)
 		#button_element.configure(command=lambda: btn_col(2))
@@ -145,7 +145,7 @@ def weather(input_text, entry_element, scrolledtext_element, button_element, sta
 	elif input_text == '取消':
 		#button_element['command'] = 'command=lambda: btn_col(1)' 
 		button_element.configure(command=lambda: btn_col(1, entry_element, scrolledtext_element, button_element))
-		output_str = '已結束搜尋天氣資訊。'  + '\n' + '---------------------------------------------------------'
+		output_str = '已結束搜尋天氣資訊。'  + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 		return 0
         
@@ -175,13 +175,13 @@ def weather(input_text, entry_element, scrolledtext_element, button_element, sta
 		locations_list = ['支援的縣市:']
 		for key in locations.keys():
 			locations_list[0] += key + ' '
-		output_str = '輸入未支援的地區。\n\n' + locations_list[0] +'\n請重新輸入。' + '\n' + '---------------------------------------------------------'
+		output_str = '輸入未支援的地區。\n\n' + locations_list[0] +'\n請重新輸入。' + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 		button_element.configure(command=lambda: btn_col(2, entry_element, scrolledtext_element, button_element))
 		pass
 
 	except Exception as e:
-		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n' + '---------------------------------------------------------'
+		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 
 #未來三天降雨機率
@@ -197,53 +197,53 @@ def weather_predict_information(data, scrolledtext_element):
 			present_data = present_data['elementValue']
 			present_data = present_data[0]
 			collect_weather_information += present_data.get('value') + '\n\n'
-		collect_weather_information += "更多資訊: https://data.gov.tw/dataset/9308" + '\n' + '---------------------------------------------------------'
+		collect_weather_information += "更多資訊: https://data.gov.tw/dataset/9308" + '\n' + '---------------------------------------------------------' + '\n'
 		output_str = collect_weather_information
 		scrolledtext_element.insert(tk.END, output_str)
 
 	except Exception as e:
-		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n' + '---------------------------------------------------------'
+		output_str = '發生未知錯誤。錯誤代碼訊息: ' + e + '\n' + '---------------------------------------------------------' + '\n'
 		scrolledtext_element.insert(tk.END, output_str)
 
 def hello(input_, scrolledtext_element):
-	output_str = '您好,歡迎與我聊天,請問有什麼事嗎? 或有什麼想聊的嗎?' + '\n' + '---------------------------------------------------------'
+	output_str = '您好,歡迎與我聊天,請問有什麼事嗎? 或有什麼想聊的嗎?' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def get_time(input_, scrolledtext_element):
 	now = datetime.datetime.now()
-	output_str = '現在時間是: ' + now.strftime("%Y年%m月%d號 %H時%M分%S秒") + '\n' + '---------------------------------------------------------'
+	output_str = '現在時間是: ' + now.strftime("%Y年%m月%d號 %H時%M分%S秒") + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def good_food_osusume(input_, scrolledtext_element):
 	good_food_list = ['藍獸亓--香酥黃金雞飯',  '二口炒飯--綜合鐵板麵', '快炒王--火腿蛋炒飯', '福禾--無骨雞丁便當', '古早味便當--大雞腿便當', '翔鶴--雞排便當', '樂謎雞排--原味雞排', '八兩--雞排']
 	good_drink_list = ['水云茶堂--珍珠紅茶無糖去冰', '多多茶坊--核廢料', '喫茶小舖--薑汁撞奶', '春水堂--珍珠奶茶']
-	output_str = '我覺得你今天可以吃 : \n' + good_food_list[random.randint(0, len(good_food_list)-1)] + ' 搭配 ' + good_drink_list[random.randint(0, len(good_drink_list)-1)] + '\n' + '---------------------------------------------------------'
+	output_str = '我覺得你今天可以吃 : \n' + good_food_list[random.randint(0, len(good_food_list)-1)] + ' 搭配 ' + good_drink_list[random.randint(0, len(good_drink_list)-1)] + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def exercise_osusume(input_, scrolledtext_element):
 	exercise_list = ['打籃球', '打羽球', '打網球', '打排球','踢足球','打撞球','打桌球']
-	output_str = '你今天可以去 : ' + exercise_list[random.randint(0, len(exercise_list))-1] + '\n' + '---------------------------------------------------------'
+	output_str = '你今天可以去 : ' + exercise_list[random.randint(0, len(exercise_list))-1] + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def full(input_, scrolledtext_element):
 	full_list = ['雖然只有電,但是我吃很飽謝謝關心!!','痾....當然有吃飽,不然還能跟你聊天?']
-	output_str = full_list[random.randint(0, len(full_list))-1] + '請問還有什麼事呢? 或是想聊的?' + '\n' + '---------------------------------------------------------'
+	output_str = full_list[random.randint(0, len(full_list))-1] + '\n請問還有什麼事呢? 或是想聊的?' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def doing(input_, scrolledtext_element):
 	doing_list = [' 運動 ',' 睡覺 ',' 吃一中街食物 ']
-	output_str = '我覺得你可以去' + doing_list[random.randint(0, len(doing_list))-1] + '或 繼續陪我聊天 ' + '\n' + '---------------------------------------------------------'
+	output_str = '我覺得你可以去' + doing_list[random.randint(0, len(doing_list))-1] + '或 繼續陪我聊天 ' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def keep(input_, scrolledtext_element):
 	keep_list = ['當然沒有問題!!','謝謝~我很歡迎','那有什麼問題!']
-	output_str = keep_list[random.randint(0, len(keep_list))-1] + '那你想聊什麼呢?' + '\n' + '---------------------------------------------------------'
+	output_str = keep_list[random.randint(0, len(keep_list))-1] + '那你想聊什麼呢?' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def keep1(input_, scrolledtext_element):
-	output_str = '那你想聊什麼呢?' + '\n' + '---------------------------------------------------------'
+	output_str = '那你想聊什麼呢?' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
 
 def fu(input_, scrolledtext_element):
-	output_str = '我有以下這些功能:\n' + '查看天氣\n' + '查看時間\n' + '建議你今天可以做什麼\n' + '幫你想可以吃什麼食物,但僅限於一中街\n' + '建議你可以做什麼運動\n' + '\n' + '---------------------------------------------------------'
+	output_str = '我有以下這些功能:\n' + '查看天氣\n' + '查看時間\n' + '建議你今天可以做什麼\n' + '幫你想可以吃什麼食物,但僅限於一中街\n' + '建議你可以做什麼運動\n' + '\n' + '---------------------------------------------------------' + '\n'
 	scrolledtext_element.insert(tk.END, output_str)
